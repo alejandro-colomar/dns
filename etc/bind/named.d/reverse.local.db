@@ -1,0 +1,21 @@
+;;
+;; BIND reverse data file for local loopback interface
+;;
+$TTL	604800
+@	IN	SOA	localhost. root.localhost. (
+			      2		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;;
+
+;; Name server information
+@	IN	NS	dns.alejandro-colomar.local.
+
+;; Reverse lookup for name server
+131	IN	PTR	dns.alejandro-colomar.local.
+
+;; PTR record IP address to hostname
+131	IN	PTR	www.alejandro-colomar.local.
+131	IN	PTR	downloads.alejandro-colomar.local.

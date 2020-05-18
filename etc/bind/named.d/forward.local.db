@@ -1,0 +1,25 @@
+;;
+;; BIND data file for local loopback interface
+;;
+$TTL	604800
+@	IN	SOA	ns1.alejandro-colomar.local. root.alejandro-colomar.local. (
+			      2		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;;
+
+;; Name server information
+@	IN	NS	dns.alejandro-colomar.local.
+
+;; IP address of name server
+dns	IN	A	192.168.1.131
+
+;; Mail exchanger
+alejandro-colomar.local.	IN	MX	10	mail.alejandro-colomar.local.
+
+;; A - Record hostname to IP address
+downloads	IN	A	192.168.1.131
+mail		IN	A	192.168.1.131
+www		IN	A	192.168.1.131
