@@ -5,9 +5,17 @@
 ###############################################################################
 
 FROM									\
-	alpine@sha256:b28e271d721b3f6377cb5bae6cd4506d2736e77ef6f70ed9b0c4716da8bdf17c \
+	debian@sha256:aa1db351593d2849034c0395bc604dd65aa80ae4471da4a37a0c38e30aed3ab8 \
 			AS dns
 
-RUN	apk add bind
+RUN									\
+	apt-get update							&& \
+	apt-get install -y bind9					&& \
+	apt-get autoremove --purge -y
+
+RUN									\
+	mkdir -p /etc/bind/named.d					&& \
+	echo 'include "/etc/bind/named.d/zones.conf";'		\
+			>> /etc/bind/named.conf.local
 
 ###############################################################################
