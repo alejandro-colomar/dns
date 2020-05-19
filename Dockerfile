@@ -4,8 +4,9 @@
 #        SPDX-License-Identifier:  GPL-2.0-only                               #
 ###############################################################################
 
+	## alpine/git:latest
 FROM									\
-	alpine/git@sha256:3640856b23fc294757fd1d0d8b6aaecd689e8f234df8513e7b789f04c99ac600 \
+	alpine/git@sha256:07f99e3b565e0c6e2f447e73f4374356dd9859e343f9da2788e334a576752a14 \
 			AS git
 
 RUN									\
@@ -17,6 +18,7 @@ RUN									\
 
 ###############################################################################
 
+	## debian:stable-slim
 FROM									\
 	debian@sha256:aa1db351593d2849034c0395bc604dd65aa80ae4471da4a37a0c38e30aed3ab8 \
 			AS dns
