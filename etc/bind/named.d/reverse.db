@@ -17,5 +17,6 @@ $TTL	604800
 131	IN	PTR	dns.alejandro-colomar.es.
 
 ;; PTR record IP address to hostname
+131	IN	PTR	git.alejandro-colomar.es.
+131	IN	PTR	mail.alejandro-colomar.es.
 131	IN	PTR	www.alejandro-colomar.es.
-131	IN	PTR	downloads.alejandro-colomar.es.

@@ -20,6 +20,6 @@ dns	IN	A	192.168.1.131
 alejandro-colomar.es.	IN	MX	10	mail.alejandro-colomar.es.
 
 ;; A - Record hostname to IP address
-downloads	IN	A	192.168.1.131
+git		IN	A	192.168.1.131
 mail		IN	A	192.168.1.131
 www		IN	A	192.168.1.131
