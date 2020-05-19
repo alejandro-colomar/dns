@@ -2,7 +2,7 @@
 ;; BIND data file for local loopback interface
 ;;
 $TTL	604800
-@	IN	SOA	ns1.alejandro-colomar.local. root.alejandro-colomar.local. (
+@	IN	SOA	ns1.alejandro-colomar.es. root.alejandro-colomar.es. (
 			      2		; Serial
 			 604800		; Refresh
 			  86400		; Retry
@@ -11,13 +11,13 @@ $TTL	604800
 ;;
 
 ;; Name server information
-@	IN	NS	dns.alejandro-colomar.local.
+@	IN	NS	dns.alejandro-colomar.es.
 
 ;; IP address of name server
 dns	IN	A	192.168.1.131
 
 ;; Mail exchanger
-alejandro-colomar.local.	IN	MX	10	mail.alejandro-colomar.local.
+alejandro-colomar.es.	IN	MX	10	mail.alejandro-colomar.es.
 
 ;; A - Record hostname to IP address
 downloads	IN	A	192.168.1.131

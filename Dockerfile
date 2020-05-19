@@ -33,10 +33,10 @@ RUN									\
 ## configure dns server
 COPY	--from=git	/repo/etc/bind/named.d/zones.conf		\
 			/etc/bind/named.d/zones.conf
-COPY	--from=git	/repo/etc/bind/named.d/forward.local.db		\
-			/etc/bind/named.d/forward.local.db
-COPY	--from=git	/repo/etc/bind/named.d/reverse.local.db		\
-			/etc/bind/named.d/reverse.local.db
+COPY	--from=git	/repo/etc/bind/named.d/forward.db		\
+			/etc/bind/named.d/forward.db
+COPY	--from=git	/repo/etc/bind/named.d/reverse.db		\
+			/etc/bind/named.d/reverse.db
 RUN									\
 	mkdir -p /etc/bind/named.d					&& \
 	echo 'include "/etc/bind/named.d/zones.conf";'			\
