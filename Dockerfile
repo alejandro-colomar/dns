@@ -36,4 +36,6 @@ COPY	--from=git	/repo/etc/bind/named.conf			\
 COPY	--from=git	/repo/etc/bind/named.d/				\
 			/etc/bind/named.d
 
+CMD	["named", "-c", "/etc/bind/named.conf", "-g", "-u", "named"]
+
 ###############################################################################
