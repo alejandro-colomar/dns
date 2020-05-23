@@ -17,18 +17,11 @@ RUN									\
 
 ###############################################################################
 
-##	debian:stable-slim
-FROM	debian@sha256:aa1db351593d2849034c0395bc604dd65aa80ae4471da4a37a0c38e30aed3ab8 \
+##	alpine:latest
+FROM	alpine@sha256:39eda93d15866957feaee28f8fc5adb545276a64147445c64992ef69804dbf01 \
 			AS dns
 
-RUN									\
-	apt-get update							&& \
-	apt-get install -V \
-			bind9 \
-			--yes						&& \
-	apt-get autoremove --purge -y					&& \
-	apt-get autoclean						&& \
-	apt-get clean
+RUN	apk add	--no-cache bind
 
 ## configure dns server
 COPY	--from=git	/repo/etc/bind/named.conf			\
