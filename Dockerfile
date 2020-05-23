@@ -31,9 +31,9 @@ RUN									\
 	apt-get clean
 
 ## configure dns server
-COPY	--from=git	/repo/etc/bind/named.d/*			\
-			/etc/bind/named.d/
-RUN	echo 'include "/etc/bind/named.d/zones.conf";'			\
-			>> /etc/bind/named.conf.local
+COPY	--from=git	/repo/etc/bind/named.conf			\
+			/etc/bind/named.conf
+COPY	--from=git	/repo/etc/bind/named.d/				\
+			/etc/bind/named.d
 
 ###############################################################################
