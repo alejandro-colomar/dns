@@ -23,7 +23,7 @@ services:
       mode: global
     image: "alejandrocolomar/dns.alejandro-colomar:v0.1"
     ports:
-    - "5353:53"
+    - "5353:53/udp"
     secrets:
     - mode: 0440
       source: forward
