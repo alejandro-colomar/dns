@@ -27,7 +27,7 @@ RUN	apk add	--no-cache --upgrade bind
 COPY	--from=git	/repo/run/configs/etc/bind/named.conf		\
 			/etc/bind/named.conf
 COPY	--from=git	/repo/run/secrets/var/bind/master		\
-			/var/bind/master
+			/run/secrets/var/bind/master
 
 CMD	["named", "-g"]
 
