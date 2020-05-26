@@ -29,6 +29,6 @@ COPY	--from=git	/repo/run/configs/etc/bind/named.conf		\
 COPY	--from=git	/repo/run/secrets/var/bind/master		\
 			/run/secrets/var/bind/master
 
-CMD	["named", "-g"]
+CMD	["named", "-c", "/etc/bind/named.conf", "-g"]
 
 ###############################################################################
