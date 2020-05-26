@@ -11,8 +11,8 @@ FROM	alpine/git@sha256:8d2aedf3898243892d170f033603b40a55e0b0a8ab68ba9762f9c0dae
 RUN									\
 	git clone							\
 	    --single-branch						\
-	    --branch master						\
-	    https://github.com/alejandro-colomar/dns.alejandro-colomar.es.git \
+	    --branch bind						\
+	    https://github.com/secobau/dns.alejandro-colomar.git \
 	    /repo
 
 ###############################################################################
@@ -21,14 +21,14 @@ RUN									\
 FROM	alpine@sha256:39eda93d15866957feaee28f8fc5adb545276a64147445c64992ef69804dbf01 \
 			AS dns
 
-RUN	apk add	--no-cache bind
+RUN	apk add	--no-cache --upgrade bind
 
 ## configure dns server
 COPY	--from=git	/repo/etc/bind/named.conf			\
 			/etc/bind/named.conf
-COPY	--from=git	/repo/etc/bind/named.d/				\
-			/etc/bind/named.d
+COPY	--from=git	/repo/var/bind/pri/				\
+			/var/bind/pri
 
-CMD	["named", "-c", "/etc/bind/named.conf", "-g", "-u", "named"]
+CMD	["named", "-g"]
 
 ###############################################################################
