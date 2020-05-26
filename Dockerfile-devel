@@ -12,7 +12,7 @@ RUN									\
 	git clone							\
 	    --single-branch						\
 	    --branch bind						\
-	    https://github.com/secobau/dns.alejandro-colomar.git \
+	    https://github.com/alejandro-colomar/dns.alejandro-colomar.git \
 	    /repo
 
 ###############################################################################
