@@ -3,30 +3,33 @@
 #      SPDX-License-Identifier:  GPL-2.0-only                           #
 #########################################################################
 
-version: '3.8'
-services:
-  dns:
-    image: "secobau/dns:release-1.0"
-    ports:
-    - "53:53"
-    configs:
-    - source: named
-      target: /etc/bind/named.conf
-      mode: 0440
-    secrets:
-    - source: forward
-      target: var/bind/master/alejandro-colomar.com
-      mode: 0440
-    - source: reverse
-      target: var/bind/master/10.168
-      mode: 0440
-    deploy:
-      mode: global
 configs:
   named:
     file: /run/configs/etc/bind/named.conf
+
 secrets:
   forward:
     file: /run/secrets/var/bind/master/alejandro-colomar.com
   reverse:
     file: /run/secrets/var/bind/master/10.168
+
+services:
+  dns:
+    configs:
+    - mode: 0440
+      source: named
+      target: /etc/bind/named.conf
+    deploy:
+      mode: global
+    image: "alejandrocolomar/dns.alejandro-colomar:v0.1"
+    ports:
+    - "53:53"
+    secrets:
+    - mode: 0440
+      source: forward
+      target: var/bind/master/alejandro-colomar.com
+    - mode: 0440
+      source: reverse
+      target: var/bind/master/10.168
+
+version: '3.8'
