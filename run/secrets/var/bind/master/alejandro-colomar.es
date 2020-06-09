@@ -8,4 +8,4 @@ $TTL										604800
 		IN	NS	dns.alejandro-colomar.es.
 dns		IN	A	127.0.0.1
 kube-apiserver	IN	CNAME	dns
-service-1	IN	A	10.168.6.100
+www	IN	A	10.168.6.100
