@@ -23,7 +23,7 @@ services:
             target: /etc/bind/named.conf
         deploy:
             mode: global
-        image: "alejandrocolomar/dns:v0.1"
+        image: "alejandrocolomar/dns:master_amd64"
         ports:
         -   "53:53/udp"
         secrets:
@@ -40,6 +40,6 @@ version: "3.8"
 
 ################################################################################
 #sudo docker swarm init                                                        ;
-#sudo docker stack deploy -c etc/docker/swarm/docker-compose.yaml web          ;
+#sudo docker stack deploy -c etc/docker/swarm/docker-compose_amd64.yaml web    ;
 #sudo docker stack rm web                                                      ;
 ################################################################################
