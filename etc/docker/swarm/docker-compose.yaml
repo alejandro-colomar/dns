@@ -1,7 +1,7 @@
 ################################################################################
-#        Copyright (C) 2020        Sebastian Francisco Colomar Bauza           #
-#        Copyright (C) 2020        Alejandro Colomar Andrés                    #
-#        SPDX-License-Identifier:  GPL-2.0-only                                #
+##      Copyright (C) 2020        Sebastian Francisco Colomar Bauza           ##
+##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
+##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 
 configs:
@@ -23,7 +23,7 @@ services:
             target: /etc/bind/named.conf
         deploy:
             mode: global
-        image: "alejandrocolomar/bind:1.0.4_aarch64"
+        image: "alejandrocolomar/bind:1.0.6"
         ports:
         -   "53:53/udp"
         secrets:
@@ -40,6 +40,6 @@ version: "3.8"
 
 ################################################################################
 #sudo docker swarm init                                                        ;
-#sudo docker stack deploy -c etc/docker/swarm/docker-compose_aarch64.yaml web  ;
+#sudo docker stack deploy -c etc/docker/swarm/docker-compose.yaml web          ;
 #sudo docker stack rm web                                                      ;
 ################################################################################
