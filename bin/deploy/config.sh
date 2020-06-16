@@ -29,15 +29,15 @@ ARGC=0;
 function prepare_configs()
 {
 
-	mkdir -pv	/run/configs/
-	cp -rfvT	run/configs/dns/	/run/configs/dns
+	mkdir -pv	/run/configs/;
+	cp -rfvT	run/configs/dns/	/run/configs/dns;
 }
 
 function prepare_secrets()
 {
 
-	mkdir -pv	/run/secrets/
-	cp -rfvT	run/secrets/dns/	/run/secrets/dns
+	mkdir -pv	/run/secrets/;
+	cp -rfvT	run/secrets/dns/	/run/secrets/dns;
 }
 
 
@@ -47,8 +47,8 @@ function prepare_secrets()
 function main()
 {
 
-	prepare_configs
-	prepare_secrets
+	prepare_configs;
+	prepare_secrets;
 }
 
 
