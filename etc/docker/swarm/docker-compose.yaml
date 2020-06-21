@@ -23,7 +23,7 @@ services:
             target: /etc/bind/named.conf
         deploy:
             mode: global
-        image: "alejandrocolomar/bind:1.0.7"
+        image: "alejandrocolomar/bind:1.1.0"
         ports:
         -   "32053:53/udp"
         secrets:
