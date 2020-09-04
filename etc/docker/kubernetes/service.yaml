@@ -1,0 +1,19 @@
+################################################################################
+##      Copyright (C) 2020        Sebastian Francisco Colomar Bauza           ##
+##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
+##      SPDX-License-Identifier:  GPL-2.0-only                                ##
+################################################################################
+
+apiVersion: v1
+kind: Service
+metadata:
+    name: dns
+spec:
+    ports:
+    -
+        nodePort: 30053
+        port: 30053
+    selector:
+        service: dns-svc
+    type: NodePort
+

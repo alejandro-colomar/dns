@@ -1,8 +1,6 @@
-#!/bin/bash -x
-##	./bin/deploy.sh
 ################################################################################
-##	Copyright (C) 2020	  Alejandro Colomar Andrés		      ##
-##	SPDX-License-Identifier:  GPL-2.0-only				      ##
+##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
+##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
 ## Deploy stack
@@ -14,50 +12,30 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
-source	lib/libalx/sh/sysexits.sh;
+source	etc/dns/config.sh;
+source	lib/dns/deploy/common/config.sh;
+source	lib/dns/deploy/kubernetes/config.sh;
 
 
 ################################################################################
 ##	definitions							      ##
 ################################################################################
-ARGC=0;
-
-COMPOSE_FNAME="etc/docker/swarm/docker-compose.yaml";
 
 
 ################################################################################
 ##	functions							      ##
 ################################################################################
-function deploy_stack()
+## sudo
+function kube_deploy()
 {
-	local	version="$(dit describe --tags)";
-	local	stack_name="dns_${version}";
+	local	namespace="dns";
 
-	docker deploy -c "${COMPOSE_FNAME}" ${stack_name}
+	kubectl create namespace "${namespace}";
+	kube_create_configmaps	"${namespace}";
+	kubectl apply -f "etc/docker/kubernetes/deployment.yaml" -n "${namespace}";
+	kubectl apply -f "etc/docker/kubernetes/network-policy.yaml" -n "${namespace}";
+	kubectl apply -f "etc/docker/kubernetes/service.yaml" -n "${namespace}";
 }
-
-
-################################################################################
-##	main								      ##
-################################################################################
-function main()
-{
-
-	./bin/deploy/config.sh;
-	deploy_stack;
-}
-
-
-################################################################################
-##	run								      ##
-################################################################################
-argc=$#;
-if [ ${argc} -ne ${ARGC} ]; then
-	echo	"Illegal number of parameters (Requires ${ARGC})";
-	exit	${EX_USAGE};
-fi
-
-main;
 
 
 ################################################################################

@@ -25,7 +25,7 @@ services:
             mode: global
         image: "alejandrocolomar/bind:1.1.0"
         ports:
-        -   "32053:5353/udp"
+        -   "30053:5353/udp"
         secrets:
         -
             mode: 0440

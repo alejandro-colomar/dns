@@ -1,8 +1,6 @@
-#!/bin/bash -x
-##	./bin/deploy/config.sh
 ################################################################################
-##	Copyright (C) 2020	  Alejandro Colomar Andrés		      ##
-##	SPDX-License-Identifier:  GPL-2.0-only				      ##
+##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
+##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
 ## Copy configs and secrets into /run/
@@ -14,54 +12,31 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
-source	lib/libalx/sh/sysexits.sh;
 
 
 ################################################################################
 ##	definitions							      ##
 ################################################################################
-ARGC=0;
 
 
 ################################################################################
 ##	functions							      ##
 ################################################################################
+## sudo
 function prepare_configs()
 {
 
 	mkdir -pv	/run/configs/;
-	cp --remove-destination -LrvT	run/configs/dns/	/run/configs/dns;
+	cp --remove-destination -LrvT	run/configs/www/	/run/configs/www;
 }
 
+## sudo
 function prepare_secrets()
 {
 
 	mkdir -pv	/run/secrets/;
-	cp --remove-destination -LrvT	run/secrets/dns/	/run/secrets/dns;
+	cp --remove-destination -LrvT	run/secrets/www/	/run/secrets/www;
 }
-
-
-################################################################################
-##	main								      ##
-################################################################################
-function main()
-{
-
-	prepare_configs;
-	prepare_secrets;
-}
-
-
-################################################################################
-##	run								      ##
-################################################################################
-argc=$#;
-if [ ${argc} -ne ${ARGC} ]; then
-	echo	"Illegal number of parameters (Requires ${ARGC})";
-	exit	${EX_USAGE};
-fi
-
-main;
 
 
 ################################################################################

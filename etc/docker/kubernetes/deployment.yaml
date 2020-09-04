@@ -1,0 +1,60 @@
+################################################################################
+##      Copyright (C) 2020        Sebastian Francisco Colomar Bauza           ##
+##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
+##      SPDX-License-Identifier:  GPL-2.0-only                                ##
+################################################################################
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: dns-deploy
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            service: dns-svc
+    template:
+        metadata:
+            labels:
+                service: dns-svc
+        spec:
+            containers:
+            -
+                image: "alejandrocolomar/bind:1.1.0"
+                ## FIXME
+                livenessProbe:
+                    httpGet:
+                        path: /
+                        port: 30053
+                    initialDelaySeconds: 10
+                name: dns-container
+                ports:
+                -
+                    containerPort: 30053
+                ## FIXME
+                readinessProbe:
+                    httpGet:
+                        path: /
+                        port: 30053
+                    initialDelaySeconds: 1
+                volumeMounts:
+                -
+                    mountPath: /usr/local/etc/bind/
+                    name: etc-bind-volume
+                    readOnly: true
+                -
+                    ## FIXME
+                    mountPath: /usr/local/var/bind/master/
+                    name: var-bind-master-volume
+                    readOnly: true
+            volumes:
+            -
+                name: etc-bind-volume
+                configMap:
+                    name: etc-bind-cm
+            -
+                ## FIXME
+                name: var-bind-master-volume
+                secret:
+                    name: var-bind-master-sec
+
