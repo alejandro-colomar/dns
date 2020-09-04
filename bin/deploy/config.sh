@@ -30,14 +30,14 @@ function prepare_configs()
 {
 
 	mkdir -pv	/run/configs/;
-	cp -rfvT	run/configs/dns/	/run/configs/dns;
+	cp --remove-destination -LrvT	run/configs/dns/	/run/configs/dns;
 }
 
 function prepare_secrets()
 {
 
 	mkdir -pv	/run/secrets/;
-	cp -rfvT	run/secrets/dns/	/run/secrets/dns;
+	cp --remove-destination -LrvT	run/secrets/dns/	/run/secrets/dns;
 }
 
 
